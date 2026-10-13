@@ -6,3 +6,6 @@ __pycache__/
 # Solver licences
 gurobi.lic
 *.lic
+
+# Tài liệu
+/docs
