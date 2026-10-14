@@ -63,6 +63,13 @@ class TestAmo(unittest.TestCase):
         self.assertEqual(pool.top - 7, 2)
         self.assertEqual(len(clauses), 19)
 
+    def test_product_size(self):
+        # ví dụ n = 8 trong bài báo: lưới 3 x 3, 3 + 3 + 16 = 22 mệnh đề
+        pool = VarPool(8)
+        clauses = at_most_one(list(range(1, 9)), "product", pool)
+        self.assertEqual(pool.top - 8, 6)
+        self.assertEqual(len(clauses), 22)
+
 
 if __name__ == "__main__":
     unittest.main()

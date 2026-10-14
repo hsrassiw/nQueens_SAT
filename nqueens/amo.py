@@ -79,6 +79,26 @@ def commander(lits, pool):
     return clauses
 
 
+def product(lits, pool):
+    n = len(lits)
+    p = math.ceil(math.sqrt(n))
+    q = math.ceil(n / p)
+    rs = []
+    for u in range(p):
+        rs.append(pool.new())
+    cs = []
+    for v in range(q):
+        cs.append(pool.new())
+
+    clauses = binomial(rs, pool) + binomial(cs, pool)
+    for i in range(n):
+        u = i // q   # ô thứ i nằm ở hàng u, cột v của lưới
+        v = i % q
+        clauses.append([-lits[i], rs[u]])
+        clauses.append([-lits[i], cs[v]])
+    return clauses
+
+
 def pysat_amo(lits, pool, enc_type):
     cnf = CardEnc.atmost(lits=lits, bound=1, top_id=pool.top, encoding=enc_type)
     if cnf.nv > pool.top:
@@ -101,6 +121,7 @@ ENCODINGS = {
     "seqcounter": seqcounter,
     "seqcounter_pysat": seqcounter_pysat,
     "commander": commander,
+    "product": product,
 }
 
 

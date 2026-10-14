@@ -16,7 +16,7 @@ với hai phương pháp giải chính xác khác:
 - [x] Bước 3 – encoding binary
 - [x] Bước 4 – encoding sequential counter
 - [x] Bước 5 – encoding commander
-- [ ] Bước 6 – encoding product
+- [x] Bước 6 – encoding product
 - [ ] Bước 7 – mô hình CP (CP-SAT, CPLEX CP)
 - [ ] Bước 8 – mô hình ILP (CPLEX MIP, Gurobi)
 - [ ] Bước 9 – thực nghiệm
