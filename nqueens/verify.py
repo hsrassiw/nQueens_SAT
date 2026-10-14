@@ -1,7 +1,4 @@
-# Kiểm tra lời giải, độc lập với solver.
-# Lời giải là danh sách queens dài n, queens[r] là cột của quân hậu ở hàng r.
-# Hợp lệ khi không có hai quân nào cùng cột, cùng đường chéo (r - c)
-# hoặc cùng đường chéo phụ (r + c).
+# Kiểm tra lời giải, queens[r] là cột của quân hậu ở hàng r
 
 
 def is_valid(n, queens):

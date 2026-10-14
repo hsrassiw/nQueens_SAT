@@ -13,7 +13,7 @@ với hai phương pháp giải chính xác khác:
 
 - [x] Bước 1 – khung dự án, bộ kiểm tra lời giải
 - [x] Bước 2 – mô hình SAT, encoding binomial
-- [ ] Bước 3 – encoding binary
+- [x] Bước 3 – encoding binary
 - [ ] Bước 4 – encoding sequential counter
 - [ ] Bước 5 – encoding commander
 - [ ] Bước 6 – encoding product
@@ -27,5 +27,6 @@ với hai phương pháp giải chính xác khác:
 ```bash
 pip install -r requirements.txt
 python -m unittest discover tests -v
-python -m nqueens.sat_model 8      # giải và in bàn cờ 8x8
+python -m nqueens.sat_model 8          # giải và in bàn cờ 8x8
+python -m nqueens.sat_model 8 binary   # chọn encoding khác
 ```
