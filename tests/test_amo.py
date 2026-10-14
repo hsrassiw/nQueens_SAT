@@ -56,6 +56,13 @@ class TestAmo(unittest.TestCase):
             self.assertEqual(pool.top - n, n - 1)
             self.assertEqual(len(clauses), 3 * n - 4)
 
+    def test_commander_size(self):
+        # ví dụ n = 7 trong bài báo: 2 nhóm (4 + 3 ô), 19 mệnh đề
+        pool = VarPool(7)
+        clauses = at_most_one(list(range(1, 8)), "commander", pool)
+        self.assertEqual(pool.top - 7, 2)
+        self.assertEqual(len(clauses), 19)
+
 
 if __name__ == "__main__":
     unittest.main()

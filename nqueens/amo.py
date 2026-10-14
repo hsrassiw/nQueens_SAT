@@ -1,5 +1,7 @@
 # Các encoding cho ràng buộc AMO (nhiều nhất một) và EO (đúng một)
 
+import math
+
 from pysat.card import CardEnc, EncType
 
 
@@ -56,6 +58,27 @@ def seqcounter(lits, pool):
     return clauses
 
 
+def commander(lits, pool):
+    n = len(lits)
+    g = math.isqrt(n)
+    size = math.ceil(n / g)
+    groups = []
+    for start in range(0, n, size):
+        groups.append(lits[start:start + size])
+
+    clauses = []
+    cs = []
+    for group in groups:
+        c = pool.new()
+        cs.append(c)
+        clauses.append([-c] + group)       # c đúng thì nhóm có quân
+        clauses += binomial(group, pool)   # trong nhóm nhiều nhất một quân
+        for x in group:
+            clauses.append([c, -x])        # c sai thì cả nhóm không có quân
+    clauses += binomial(cs, pool)          # nhiều nhất một c đúng
+    return clauses
+
+
 def pysat_amo(lits, pool, enc_type):
     cnf = CardEnc.atmost(lits=lits, bound=1, top_id=pool.top, encoding=enc_type)
     if cnf.nv > pool.top:
@@ -77,6 +100,7 @@ ENCODINGS = {
     "binary_pysat": binary_pysat,
     "seqcounter": seqcounter,
     "seqcounter_pysat": seqcounter_pysat,
+    "commander": commander,
 }
 
 

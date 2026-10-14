@@ -15,7 +15,7 @@ với hai phương pháp giải chính xác khác:
 - [x] Bước 2 – mô hình SAT, encoding binomial
 - [x] Bước 3 – encoding binary
 - [x] Bước 4 – encoding sequential counter
-- [ ] Bước 5 – encoding commander
+- [x] Bước 5 – encoding commander
 - [ ] Bước 6 – encoding product
 - [ ] Bước 7 – mô hình CP (CP-SAT, CPLEX CP)
 - [ ] Bước 8 – mô hình ILP (CPLEX MIP, Gurobi)
