@@ -40,6 +40,22 @@ def binary(lits, pool):
     return clauses
 
 
+def seqcounter(lits, pool):
+    n = len(lits)
+    if n <= 1:
+        return []
+    s = []
+    for i in range(n - 1):
+        s.append(pool.new())
+    clauses = [[-lits[0], s[0]]]
+    for i in range(1, n - 1):
+        clauses.append([-lits[i], s[i]])
+        clauses.append([-s[i - 1], s[i]])
+        clauses.append([-s[i - 1], -lits[i]])
+    clauses.append([-s[n - 2], -lits[n - 1]])
+    return clauses
+
+
 def pysat_amo(lits, pool, enc_type):
     cnf = CardEnc.atmost(lits=lits, bound=1, top_id=pool.top, encoding=enc_type)
     if cnf.nv > pool.top:
@@ -51,10 +67,16 @@ def binary_pysat(lits, pool):
     return pysat_amo(lits, pool, EncType.bitwise)
 
 
+def seqcounter_pysat(lits, pool):
+    return pysat_amo(lits, pool, EncType.seqcounter)
+
+
 ENCODINGS = {
     "binomial": binomial,
     "binary": binary,
     "binary_pysat": binary_pysat,
+    "seqcounter": seqcounter,
+    "seqcounter_pysat": seqcounter_pysat,
 }
 
 

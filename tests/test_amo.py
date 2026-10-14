@@ -49,6 +49,13 @@ class TestAmo(unittest.TestCase):
             self.assertEqual(pool.top - n, k)
             self.assertEqual(len(clauses), n * k)
 
+    def test_seqcounter_size(self):
+        for n in range(2, 10):
+            pool = VarPool(n)
+            clauses = at_most_one(list(range(1, n + 1)), "seqcounter", pool)
+            self.assertEqual(pool.top - n, n - 1)
+            self.assertEqual(len(clauses), 3 * n - 4)
+
 
 if __name__ == "__main__":
     unittest.main()
