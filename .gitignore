@@ -9,3 +9,5 @@ gurobi.lic
 
 # Tài liệu
 /docs
+
+*.log
