@@ -18,7 +18,7 @@ với hai phương pháp giải chính xác khác:
 - [x] Bước 5 – encoding commander
 - [x] Bước 6 – encoding product
 - [x] Bước 7 – mô hình CP (CP-SAT, CPLEX CP)
-- [ ] Bước 8 – mô hình ILP (CPLEX MIP, Gurobi)
+- [x] Bước 8 – mô hình ILP (CPLEX MIP, Gurobi)
 - [ ] Bước 9 – thực nghiệm
 - [ ] Bước 10 – báo cáo
 
@@ -30,6 +30,7 @@ python -m unittest discover tests -v
 python -m nqueens.sat_model 8          # giải và in bàn cờ 8x8
 python -m nqueens.sat_model 8 binary   # chọn encoding khác
 python -m nqueens.cp 8 cpsat           # giải bằng CP-SAT (hoặc cplex_cp)
+python -m nqueens.ilp 8 gurobi         # giải bằng Gurobi (hoặc cplex_mip)
 ```
 
-CPLEX CP cần cài thêm IBM CPLEX Optimization Studio (bản học thuật).
+CPLEX và Gurobi cần bản quyền học thuật để giải N lớn; CPLEX CP cần cài thêm IBM CPLEX Optimization Studio.
