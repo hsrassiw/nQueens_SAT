@@ -1,4 +1,5 @@
 python-sat>=1.9.dev15
+pycryptosat
 ortools
 docplex
 cplex

@@ -33,4 +33,14 @@ python -m nqueens.cp 8 cpsat           # giải bằng CP-SAT (hoặc cplex_cp)
 python -m nqueens.ilp 8 gurobi         # giải bằng Gurobi (hoặc cplex_mip)
 ```
 
+## Thực nghiệm
+
+```bash
+python -m experiments.run e1   # so sánh các encoding (CaDiCaL)
+python -m experiments.run e2   # so sánh các SAT solver
+python -m experiments.run e3   # so sánh SAT với CP và ILP
+```
+
+Kết quả được ghi vào thư mục `results/`. Mỗi lần giải giới hạn 300 giây. Chạy trên WSL.
+
 CPLEX và Gurobi cần bản quyền học thuật để giải N lớn; CPLEX CP cần cài thêm IBM CPLEX Optimization Studio.
